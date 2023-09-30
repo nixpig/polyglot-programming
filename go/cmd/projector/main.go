@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	projector "github.com/nixpig/polyglot-programming/pkg/config"
+	projector "github.com/nixpig/polyglot-programming/pkg/projector"
 )
 
 func main() {
@@ -13,5 +13,10 @@ func main() {
 		log.Fatalf("Unable to get options %v", err)
 	}
 
-	fmt.Printf("opts: %+v", opts)
+	config, err := projector.NewConfig(opts)
+	if err != nil {
+		log.Fatalf("Error occurred when getting new config %v", err)
+	}
+
+	fmt.Printf("config: %+v", config)
 }
