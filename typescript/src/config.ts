@@ -71,14 +71,13 @@ function getConfig(opts: Opts): string {
     return opts.config;
   }
 
-  const homeConfigDir =
-    process.env["XDG_CONFIG_HOME"] ?? `${process.env["HOME"]}/.config`;
+  const homeDir = process.env["HOME"];
 
-  if (!homeConfigDir) {
-    throw new Error("Could not determine config location");
+  if (!homeDir) {
+    throw new Error("Could not determine home location");
   }
 
-  return path.join(homeConfigDir, "projector", "projector.json");
+  return path.join(homeDir, ".config", "projector", "projector.json");
 }
 
 function getPwd(opts: Opts): string {
