@@ -15,7 +15,7 @@ func main() {
 
 	config, err := projector.NewConfig(opts)
 	if err != nil {
-		log.Fatalf("Error occurred when getting new config %v", err)
+		log.Fatalf("Error occurred when getting new config: %v", err)
 	}
 
 	fmt.Printf("config: %+v", config)

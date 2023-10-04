@@ -57,18 +57,16 @@ func getArgs(opts *Opts) ([]string, error) {
 }
 
 func getOperation(opts *Opts) (Operation, error) {
-	if len(opts.Args) == 0 {
-		return 0, fmt.Errorf("expected 1 or more arguments but got %v", len(opts.Args))
-	}
-	if opts.Args[0] == "add" {
+	if len(opts.Args) > 0 && opts.Args[0] == "add" {
 		return Add, nil
 	}
 
-	if opts.Args[0] == "remove" {
+	if len(opts.Args) > 0 && opts.Args[0] == "remove" {
 		return Remove, nil
 	}
 
 	return Print, nil
+
 }
 
 func getConfig(opts *Opts) (string, error) {
